@@ -542,10 +542,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 1006028211}
-  sm: {fileID: 2033787375}
-  acceleration: 1
+  acceleration: 10
   deacceleration: 0.3
-  maxSpeed: 4
+  maxSpeed: 5
   bounceSpeed: 10
   gravityScale: 1
 --- !u!54 &1006028211
