@@ -18,7 +18,7 @@ public class StageManager : MonoBehaviour
 
     float[] minRangeXZ = { 2.0f, 2.5f, 2.0f, 2.5f, 2.5f };
     float[] maxRangeXZ = { 3.0f, 3.5f, 3.0f, 3.5f, 3.5f };
-    float[] minRangeY = { -1.0f, -2.0f, -1.0f, -2.0f, -2.5f };
+    float[] minRangeY = { -1.0f, -2.0f, -1.0f, -2.0f, -2.0f };
     float[] maxRangeY = { 0.5f, 1.0f, 0.5f, 1.0f, 1.0f };
 
     public bool GetIsPaused()
