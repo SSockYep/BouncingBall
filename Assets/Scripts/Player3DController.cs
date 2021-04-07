@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
 
 public class Player3DController : MonoBehaviour
 {
@@ -9,12 +8,12 @@ public class Player3DController : MonoBehaviour
     public Transform cam;
     public StageManager sm;
 
-    public float acceleration = 1.0f;
-    public float deacceleration = 1.0f;
+    public float acceleration = 10.0f;
+    public float deacceleration = 0.3f;
     public float maxSpeed = 4.0f;
-    public float bounceSpeed = 10.0f;
+    public float bounceSpeed = 8.0f;
 
-    public float gravityScale = 1.0f;
+    public float gravityScale = 2.0f;
 
     public static float globalGravity = -9.81f;
 

@@ -7,12 +7,12 @@ public class Player2DController : MonoBehaviour
 
     public Rigidbody rb;
 
-    public float acceleration = 1.0f;
-    public float deacceleration = 1.0f;
+    public float acceleration = 10.0f;
+    public float deacceleration = 0.3f;
     public float maxSpeed = 4.0f;
-    public float bounceSpeed = 10.0f;
+    public float bounceSpeed = 8.0f;
 
-    public float gravityScale = 1.0f;
+    public float gravityScale = 2.0f;
 
     public static float globalGravity = -9.81f;
 
@@ -33,7 +33,7 @@ public class Player2DController : MonoBehaviour
         {
             if (Mathf.Abs(movementX) >= 0.1f && speed < maxSpeed)
             {
-                rb.AddForce(new Vector3(movementX
+                rb.AddForce(new Vector3(1.0f
                     , 0.0f, 0.0f) * acceleration);
             }
             if (Mathf.Abs(speed) >= maxSpeed)
@@ -52,7 +52,6 @@ public class Player2DController : MonoBehaviour
 
     void FixedUpdate()
     {
-        rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, 0);
         Vector3 gravity = globalGravity * gravityScale * Vector3.up;
         rb.AddForce(gravity, ForceMode.Acceleration);
     }
