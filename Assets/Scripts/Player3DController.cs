@@ -17,9 +17,10 @@ public class Player3DController : MonoBehaviour
 
     public static float globalGravity = -9.81f;
 
-
     private float deaccelerationX;
     private float deaccelerationZ;
+    float rotateVelocity = 0.0f;
+    float rotateSmooth = 0.3f;
 
     // Start is called before the first frame update
     void Start()
@@ -44,11 +45,22 @@ public class Player3DController : MonoBehaviour
 
                 Vector3 moveDir = Quaternion.Euler(0.0f, targetAngle, 0.0f) * Vector3.forward;
                 rb.AddForce(moveDir.normalized * acceleration);
-            }
-            if (speed >= maxSpeed)
-            {
-                vel *= maxSpeed / speed;
-                rb.velocity = new Vector3(vel.x, rb.velocity.y, vel.y);
+
+                if (speed > maxSpeed)
+                {
+                    if ((moveDir.normalized - rb.velocity.normalized).magnitude <= 0.1f)
+                    {
+                        vel *= maxSpeed / speed;
+                        rb.velocity = new Vector3(vel.x, rb.velocity.y, vel.y);
+                    }
+                    else
+                    {
+                        float movementAngle = Mathf.Atan2(vel.x, vel.y) * Mathf.Rad2Deg;
+                        float targetMovementAngle = Mathf.Atan2(moveDir.x, moveDir.z) * Mathf.Rad2Deg;
+                        float angle = Mathf.SmoothDampAngle(movementAngle, targetMovementAngle, ref rotateVelocity, rotateSmooth);
+                        rb.velocity = Quaternion.Euler(0.0f, angle, 0.0f) * rb.velocity;
+                    }
+                }
             }
             if (vel.magnitude > 0.0f && direction.magnitude < 0.1f)
             {
